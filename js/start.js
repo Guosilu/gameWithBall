@@ -1,10 +1,12 @@
 
-(function () {
+
+import {Main} from "./Main.js";
 
 
+    new Main();
 
-    var ctx = document.getElementById('canvas');
-    var canvas = ctx.getContext('2d');
+    // var ctx = document.getElementById('canvas');
+    // var start = ctx.getContext('2d');
 
     // requestAnimationFrame(run(0));
     //
@@ -28,13 +30,4 @@
         img.src=src;
         return img;
     }
-
-
-
-
-
-
-
-})()
-
 
