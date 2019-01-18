@@ -1,6 +1,8 @@
 
 import {ResourceLoader} from "./base/ResourceLoader.js";
 import {DataStore} from "./base/DataStore.js";
+import {Director} from "./Director.js";
+import {BackGround} from "./runtime/BackGround.js";
 
 export class Main {
     constructor(){
@@ -8,16 +10,26 @@ export class Main {
         this.canvas = document.getElementById("canvas");
         this.ctx = this.canvas.getContext('2d');
 
-        this.DataStore = DataStore.getInstance();
+        this.dataStore = DataStore.getInstance();
 
         const loader = ResourceLoader.createResource();
         loader.onResourceLoaded(map => this.onResourceFirstLoaded(map))
+
+        Director.getInstance();
+
     }
 
     onResourceFirstLoaded(map){
-        this.DataStore.put('key','value');
-        console.log(this.DataStore.get('key'))
-        this.DataStore.delete("key")
-        console.log(this.DataStore.get('key'))
+        this.dataStore.ctx = this.ctx;
+        this.dataStore.res = map;
+        this.init();
+
+    }
+    init(){
+        this.dataStore
+            .put('background', BackGround);
+
+        Director.getInstance().run();
+
     }
 }

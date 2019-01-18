@@ -14,6 +14,9 @@ export class DataStore {
     }
 
     put(key,value){
+        if(typeof value === 'function'){
+            value = new value();
+        }
         this.map.set(key,value);
         return this;
     }
@@ -22,8 +25,14 @@ export class DataStore {
         return this.map.get(key);
     }
 
+    destroy(){
+        for(let value of this.map.values()){
+            value = null;
+        }
+    }
+
     delete(key){
-        this.map.delete(key)
+        this.map.delete(key);
         return this;
     }
 

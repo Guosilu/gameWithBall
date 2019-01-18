@@ -1,3 +1,4 @@
 export const Resource = [
-    ['bullet', './image/bullet.png']
+    ['bullet', './image/bullet.png'],
+    ['background', './image/bg.jpg']
 ]
