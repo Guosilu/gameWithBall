@@ -3,6 +3,7 @@ import {ResourceLoader} from "./base/ResourceLoader.js";
 import {DataStore} from "./base/DataStore.js";
 import {Director} from "./Director.js";
 import {BackGround} from "./runtime/BackGround.js";
+import {Bullet} from "./runtime/Bullet.js";
 
 export class Main {
     constructor(){
@@ -27,7 +28,8 @@ export class Main {
     }
     init(){
         this.dataStore
-            .put('background', BackGround);
+            .put('background', BackGround)
+            .put('bullet', Bullet);
 
         Director.getInstance().run();
 
