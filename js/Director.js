@@ -14,11 +14,13 @@ export class Director{
 
     constructor(){
         this.dataStore = DataStore.getInstance();
+        this.speed = 1;
     }
 
     run(){
         this.dataStore.get('background').draw();
-
         this.dataStore.get('bullet').draw();
+
+        // requestAnimationFrame(() => this.run());
     }
 }

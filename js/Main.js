@@ -12,26 +12,29 @@ export class Main {
         this.ctx = this.canvas.getContext('2d');
 
         this.dataStore = DataStore.getInstance();
+        this.director = Director.getInstance();
 
         const loader = ResourceLoader.createResource();
         loader.onResourceLoaded(map => this.onResourceFirstLoaded(map))
 
-        Director.getInstance();
+        this.director = Director.getInstance();
 
     }
 
     onResourceFirstLoaded(map){
+
         this.dataStore.ctx = this.ctx;
         this.dataStore.res = map;
         this.init();
 
     }
+
     init(){
         this.dataStore
             .put('background', BackGround)
             .put('bullet', Bullet);
 
-        Director.getInstance().run();
+        this.director.run();
 
     }
 }
